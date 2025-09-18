@@ -123,7 +123,7 @@
       { text: "At the hotel, you snuggle together, watch your favorite movie (Hasee toh Phasee). He reveals something else, he bought the whole Fusilli Reasons franchise and ordered Spinach and Mushroom pasta for lunch.", image: "images/backgrounds/hotel.jpg", character: "images/characters/you.jpg", next: 13 },
       { text: "The day ends with you both snuggled together in bed, kissing occassionally and giggling about everything and nothing. You can't believe he's here with you.", image: "images/backgrounds/hotel-night.jpg", character: "images/characters/girlfriend.jpg", end: true },
       { text: "He reveals that he already has something planned for you: a pottery class. You've always wanted to go to one!", image: "images/backgrounds/pottery.jpg", character: "images/characters/you.jpg", next: 16 },
-      { text: "After a long pottery session and making cups that looked nothing like cups and evrything like frogs, you head for lunch at Baamey's. You order momo, chowmein, aloo dum. You're so full by the end, that you decide to stroll on the streets of Bangalore until night falls. You walk, hand-in-hand, taking in every moment. This day has certainly been one of the best days of this month.", image: "images/backgrounds/city.jpg", character: "images/characters/girlfriend.jpg", next: 17 },
+      { text: "After a long pottery session and making cups that looked nothing like cups and evrything like frogs, you head for lunch at Baamey's. You order momo, chowmein, aloo dum. You're so full by the end, that you decide to stroll on the streets of Bangalore until night falls. You walk, hand-in-hand, taking in every moment. This day has certainly been one of the best days of this month.", image: "images/backgrounds/city.jpg", character: "images/characters/girlfriend.jpg", next: 18 },
       { text: "As the day ends, you return to the hotel and spend the night together, reminiscing about the day and how you were both covered to your elbows in clay.", image: "images/backgrounds/hotel-night.jpg", character: "images/characters/you.jpg", end: true }
     ];
 
@@ -159,7 +159,7 @@
             <div class="text-box">${scene.text}</div>
            ${scene.choices 
   ? `<div class="choices">${scene.choices.map((c,i)=>`<button onclick="choose(${i})">${c.text}</button>`).join("")}</div>` 
-  : `${scene.next !== undefined ? `<button class='next-btn' onclick='nextScene()'>Next</button>` : ""}`
+  : `${!scene.end && index < gameData.length-1 ? `<button class='next-btn' onclick='nextScene()'>Next</button>` : ""}`
 }
 
           </div>
@@ -193,5 +193,3 @@
   </script>
 </body>
 </html>
-
-
