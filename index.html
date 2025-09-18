@@ -150,23 +150,17 @@
     }
 
     function showScene(index) {
-  const scene = gameData[index];
-  currentScene = index;
-  game.innerHTML = `
-    <div class="scene" style="background-image: url('${scene.image}')">
-      ${scene.character ? `<img src="${scene.character}" class="bubble">` : ""}
-      <div class="scene-content">
-        <div class="text-box">${scene.text}</div>
-        ${scene.choices 
-          ? `<div class="choices">${scene.choices.map((c,i)=>`<button onclick="choose(${i})">${c.text}</button>`).join("")}</div>` 
-          : `${scene.next !== undefined ? `<button class='next-btn' onclick='nextScene()'>Next</button>` : ""}`
-        }
-      </div>
-    </div>
-  `;
-  attachButtonSounds();
+      const scene = gameData[index];
+      currentScene = index;
+      game.innerHTML = `
+        <div class="scene" style="background-image: url('${scene.image}')">
+          ${scene.character ? `<img src="${scene.character}" class="bubble">` : ""}
+          <div class="scene-content">
+            <div class="text-box">${scene.text}</div>
+           ${scene.choices 
+  ? `<div class="choices">${scene.choices.map((c,i)=>`<button onclick="choose(${i})">${c.text}</button>`).join("")}</div>` 
+  : `${!scene.end && index < gameData.length-1 ? `<button class='next-btn' onclick='nextScene()'>Next</button>` : ""}`
 }
-
 
           </div>
         </div>
@@ -199,6 +193,4 @@
   </script>
 </body>
 </html>
-
-
 
