@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Happy birthday my love</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Cute rounded Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -33,7 +32,7 @@
       transition: background-image 0.5s ease-in-out;
     }
     .scene-content {
-      margin-bottom: 80px; /* lifts text + buttons higher */
+      margin-bottom: 80px;
       padding: 0 20px;
     }
     .text-box {
@@ -44,7 +43,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .choices button, .next-btn {
-      background: #5a7d5a; /* darker sage green */
+      background: #5a7d5a;
       color: white;
       border: none;
       padding: 12px 20px;
@@ -55,7 +54,7 @@
       transition: background 0.3s;
     }
     .choices button:hover, .next-btn:hover {
-      background: #739e73; /* lighter sage green hover */
+      background: #739e73;
     }
     .bubble {
       width: 60px;
@@ -157,11 +156,11 @@
           ${scene.character ? `<img src="${scene.character}" class="bubble">` : ""}
           <div class="scene-content">
             <div class="text-box">${scene.text}</div>
-           ${scene.choices 
-  ? `<div class="choices">${scene.choices.map((c,i)=>`<button onclick="choose(${i})">${c.text}</button>`).join("")}</div>` 
-  : `${!scene.end && index < gameData.length-1 ? `<button class='next-btn' onclick='nextScene()'>Next</button>` : ""}`
-}
-
+            ${
+              scene.choices 
+                ? `<div class="choices">${scene.choices.map((c,i)=>`<button onclick="choose(${i})">${c.text}</button>`).join("")}</div>` 
+                : (scene.next !== undefined ? `<button class='next-btn' onclick='nextScene()'>Next</button>` : "")
+            }
           </div>
         </div>
       `;
