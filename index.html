@@ -95,101 +95,103 @@
   </audio>
 
   <script>
-    const gameData = [
-      { text: "It's midnight. You wait for Priyanka to call and wish you, but he has been MIA for hours now. Nayana creeps up behind you and wishes you a happy birthday", image: "images/backgrounds/night.jpg", character: "images/characters/roommate.jpg" },
-      { text: "Soon, Shruti, Aleena and MJ group call you and wish you a happy birthday too. Still, no sign of your boyfriend. You become agitated. What's wrong? Why hasn't he called yet?", image: "images/backgrounds/night.jpg", character: "images/characters/friend.jpg" },
-      { text: "You wait as long as your body lets you, but eventually the day's exhaustion takes over and you fall asleep, phone still in hand with no call from Priyanka", image: "images/backgrounds/sleepy.jpg", character: "images/characters/girlfriend.jpg" },
-      { text: "You wake up and see the room is just getting light in. It's way too early, and you dont know what could have woken you up until you hear your phone ringing. It mustve lodged itself between your bed and your wall while you were asleep.", image: "images/backgrounds/morning.jpg", character: "images/characters/girlfriend.jpg" },
-      { text: "An unknown number calls... what will you do?", image: "images/backgrounds/morning.jpg", choices: [
-        { text: "Decline the call", next: 5 },
-        { text: "Pick it up", next: 6 }
-      ]},
-      { text: "You decline, annoyed that it's not Priyanka who called. But the phone wont stop ringing, and Nayana yells at you to just answer already!", image: "images/backgrounds/morning.jpg", character: "images/characters/roommate.jpg", next: 7 },
-      { text: "You pick up the phone... and it's a delivery. Could it be... No, that's just impossible. He was still in his hostel in the evening the last time you called. Confused, you head downstairs.", image: "images/backgrounds/morning.jpg", character: "images/characters/girlfriend.jpg", next: 7 },
-      { text: "When you step outside, you see Priyanka standing with a bouquet of flowers, sweat beading on his forehead. He had been running.", image: "images/backgrounds/flowers.jpg", character: "images/characters/you.jpg", choices: [
-        { text: "Run into his arms", next: 8 },
-        { text: "Huff angrily", next: 9 }
-      ]},
-      { text: "You run into his arms. He hugs you tight and asks, smiling: \"So, my love, what do you want to do today?\"", image: "images/backgrounds/flowers.jpg", character: "images/characters/you.jpg", choices: [
-        { text: "Go to hotel room", next: 12 },
-        { text: "Explore the city", next: 15 }
-      ]},
-      { text: "You cross your arms and huff. \"You didn’t even call me at midnight…\" you pout.", image: "images/backgrounds/flowers.jpg", character: "images/characters/girlfriend.jpg", next: 10 },
-      { text: "He looks guilty. \"I’m so sorry,my sweetheart… I should’ve wished you, but I wanted to surprise you by coming here and I must have fallen asleep. Please forgive me.\"", image: "images/backgrounds/flowers.jpg", character: "images/characters/you.jpg", choices: [
-        { text: "Forgive him", next: 8 },
-        { text: "Pretend to be mad", next: 11 }
-      ]},
-      { text: "You pretend to be mad, turning away. He panics. \"I swear, I just wanted this day to be special! I am really, really sorry!\"", image: "images/backgrounds/hug.jpg", character: "images/characters/you.jpg", next: 8 },
-      { text: "At the hotel, you snuggle together, watch your favorite movie (Hasee toh Phasee). He reveals something else, he bought the whole Fusilli Reasons franchise and ordered Spinach and Mushroom pasta for lunch.", image: "images/backgrounds/hotel.jpg", character: "images/characters/you.jpg", next: 13 },
-      { text: "The day ends with you both snuggled together in bed, kissing occassionally and giggling about everything and nothing. You can't believe he's here with you.", image: "images/backgrounds/hotel-night.jpg", character: "images/characters/girlfriend.jpg", next: 14 },
-      { text: "The End", image: "images/backgrounds/evening.jpg" },
-      { text: "He reveals that he already has something planned for you: a pottery class. You've always wanted to go to one!", image: "images/backgrounds/pottery.jpg", character: "images/characters/you.jpg", next: 16 },
-      { text: "After a long pottery session and making cups that looked nothing like cups and evrything like frogs, you head for lunch at Baamey's. You order momo, chowmein, aloo dum. You're so full by the end, that you decide to stroll on the streets of Bangalore until night falls. You walk, hand-in-hand, taking in every moment. This day has certainly been one of the best days of this month.", image: "images/backgrounds/city.jpg", character: "images/characters/girlfriend.jpg", next: 17 },
-      { text: "As the day ends, you return to the hotel and spend the night together, reminiscing about the day and how you were both covered to your elbows in clay.", image: "images/backgrounds/hotel-night.jpg", character: "images/characters/you.jpg", next: 14 }
-    ];
+  const gameData = [
+    { text: "It's midnight. You wait for Priyanka to call and wish you, but he has been MIA for hours now. Nayana creeps up behind you and wishes you a happy birthday", image: "images/backgrounds/night.jpg", character: "images/characters/roommate.jpg" },
+    { text: "Soon, Shruti, Aleena and MJ group call you and wish you a happy birthday too. Still, no sign of your boyfriend. You become agitated. What's wrong? Why hasn't he called yet?", image: "images/backgrounds/night.jpg", character: "images/characters/friend.jpg" },
+    { text: "You wait as long as your body lets you, but eventually the day's exhaustion takes over and you fall asleep, phone still in hand with no call from Priyanka", image: "images/backgrounds/sleepy.jpg", character: "images/characters/girlfriend.jpg" },
+    { text: "You wake up and see the room is just getting light in. It's way too early, and you dont know what could have woken you up until you hear your phone ringing. It mustve lodged itself between your bed and your wall while you were asleep.", image: "images/backgrounds/morning.jpg", character: "images/characters/girlfriend.jpg" },
+    { text: "An unknown number calls... what will you do?", image: "images/backgrounds/morning.jpg", choices: [
+      { text: "Decline the call", next: 5 },
+      { text: "Pick it up", next: 6 }
+    ]},
+    { text: "You decline, annoyed that it's not Priyanka who called. But the phone wont stop ringing, and Nayana yells at you to just answer already!", image: "images/backgrounds/morning.jpg", character: "images/characters/roommate.jpg", next: 7 },
+    { text: "You pick up the phone... and it's a delivery. Could it be... No, that's just impossible. He was still in his hostel in the evening the last time you called. Confused, you head downstairs.", image: "images/backgrounds/morning.jpg", character: "images/characters/girlfriend.jpg", next: 7 },
+    { text: "When you step outside, you see Priyanka standing with a bouquet of flowers, sweat beading on his forehead. He had been running.", image: "images/backgrounds/flowers.jpg", character: "images/characters/you.jpg", choices: [
+      { text: "Run into his arms", next: 8 },
+      { text: "Huff angrily", next: 9 }
+    ]},
+    { text: "You run into his arms. He hugs you tight and asks, smiling: \"So, my love, what do you want to do today?\"", image: "images/backgrounds/flowers.jpg", character: "images/characters/you.jpg", choices: [
+      { text: "Go to hotel room", next: 12 },
+      { text: "Explore the city", next: 15 }
+    ]},
+    { text: "You cross your arms and huff. \"You didn’t even call me at midnight…\" you pout.", image: "images/backgrounds/flowers.jpg", character: "images/characters/girlfriend.jpg", next: 10 },
+    { text: "He looks guilty. \"I’m so sorry,my sweetheart… I should’ve wished you, but I wanted to surprise you by coming here and I must have fallen asleep. Please forgive me.\"", image: "images/backgrounds/flowers.jpg", character: "images/characters/you.jpg", choices: [
+      { text: "Forgive him", next: 8 },
+      { text: "Pretend to be mad", next: 11 }
+    ]},
+    { text: "You pretend to be mad, turning away. He panics. \"I swear, I just wanted this day to be special! I am really, really sorry!\"", image: "images/backgrounds/hug.jpg", character: "images/characters/you.jpg", next: 8 },
+    { text: "At the hotel, you snuggle together, watch your favorite movie (Hasee toh Phasee). He reveals something else, he bought the whole Fusilli Reasons franchise and ordered Spinach and Mushroom pasta for lunch.", image: "images/backgrounds/hotel.jpg", character: "images/characters/you.jpg", next: 13 },
+    { text: "The day ends with you both snuggled together in bed, kissing occassionally and giggling about everything and nothing. You can't believe he's here with you.", image: "images/backgrounds/hotel-night.jpg", character: "images/characters/girlfriend.jpg", next: 14 },
+    { text: "The End", image: "images/backgrounds/evening.jpg" },
+    { text: "He reveals that he already has something planned for you: a pottery class. You've always wanted to go to one!", image: "images/backgrounds/pottery.jpg", character: "images/characters/you.jpg", next: 16 },
+    { text: "After a long pottery session and making cups that looked nothing like cups and evrything like frogs, you head for lunch at Baamey's. You order momo, chowmein, aloo dum. You're so full by the end, that you decide to stroll on the streets of Bangalore until night falls. You walk, hand-in-hand, taking in every moment. This day has certainly been one of the best days of this month.", image: "images/backgrounds/city.jpg", character: "images/characters/girlfriend.jpg", next: 17 },
+    { text: "As the day ends, you return to the hotel and spend the night together, reminiscing about the day and how you were both covered to your elbows in clay.", image: "images/backgrounds/hotel-night.jpg", character: "images/characters/you.jpg", next: 14 }
+  ];
 
-    let currentScene = 0;
-    const game = document.getElementById("game");
-    const bgMusic = document.getElementById("bg-music");
-    const clickSound = document.getElementById("click-sound");
-    let musicPlaying = false;
+  let currentScene = 0;
+  const game = document.getElementById("game");
+  const bgMusic = document.getElementById("bg-music");
+  const clickSound = document.getElementById("click-sound");
+  let musicPlaying = false;
 
-    function playClick() {
-      clickSound.currentTime = 0;
-      clickSound.play();
+  function playClick() {
+    clickSound.currentTime = 0;
+    clickSound.play();
+  }
+
+  function toggleMusic() {
+    if (musicPlaying) {
+      bgMusic.pause();
+      document.querySelector('.music-toggle').textContent = '🔇 Music';
+    } else {
+      bgMusic.play();
+      document.querySelector('.music-toggle').textContent = '🔊 Music';
     }
+    musicPlaying = !musicPlaying;
+  }
 
-    function toggleMusic() {
-      if (musicPlaying) {
-        bgMusic.pause();
-        document.querySelector('.music-toggle').textContent = '🔇 Music';
-      } else {
-        bgMusic.play();
-        document.querySelector('.music-toggle').textContent = '🔊 Music';
-      }
-      musicPlaying = !musicPlaying;
-    }
-
-    function showScene(index) {
-      const scene = gameData[index];
-      currentScene = index;
-      game.innerHTML = `
-        <div class="scene" style="background-image: url('${scene.image}')">
-          ${scene.character ? `<img src="${scene.character}" class="bubble">` : ""}
-          <div class="scene-content">
-            <div class="text-box">${scene.text}</div>
-            ${scene.choices 
-              ? `<div class="choices">${scene.choices.map((c,i)=>`<button onclick="choose(${i})">${c.text}</button>`).join("")}</div>` 
-              : `${index < gameData.length-1 ? `<button class='next-btn' onclick='nextScene()'>Next</button>` : ""}`
-            }
-          </div>
+  function showScene(index) {
+    const scene = gameData[index];
+    currentScene = index;
+    game.innerHTML = `
+      <div class="scene" style="background-image: url('${scene.image}')">
+        ${scene.character ? `<img src="${scene.character}" class="bubble">` : ""}
+        <div class="scene-content">
+          <div class="text-box">${scene.text}</div>
+          ${scene.choices 
+            ? `<div class="choices">${scene.choices.map((c,i)=>`<button onclick="choose(${i})">${c.text}</button>`).join("")}</div>` 
+            : `${!scene.next ? "" : `<button class='next-btn' onclick='nextScene()'>Next</button>`}`
+          }
         </div>
-      `;
-      attachButtonSounds();
-    }
+      </div>
+    `;
+    attachButtonSounds();
+  }
 
-    function attachButtonSounds() {
-      document.querySelectorAll('button').forEach(btn => {
-        btn.addEventListener('click', playClick);
-      });
-    }
+  function attachButtonSounds() {
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', playClick);
+    });
+  }
 
-    function nextScene() {
-      const scene = gameData[currentScene];
-      if(scene.next !== undefined) {
-        showScene(scene.next);
-      } else {
-        showScene(currentScene+1);
-      }
+  function nextScene() {
+    const scene = gameData[currentScene];
+    if(scene.next !== undefined) {
+      showScene(scene.next);
+    } else if (!scene.choices) {
+      // Game ends, do nothing
+      return;
     }
+  }
 
-    function choose(i) {
-      const choice = gameData[currentScene].choices[i];
-      showScene(choice.next);
-    }
+  function choose(i) {
+    const choice = gameData[currentScene].choices[i];
+    showScene(choice.next);
+  }
 
-    // Start game
-    showScene(0);
-  </script>
+  // Start game
+  showScene(0);
+</script>
 </body>
 </html>
+
