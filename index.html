@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Happy birthday my love</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Cute rounded Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -148,6 +149,7 @@
       musicPlaying = !musicPlaying;
     }
 
+    // =================== UPDATED showScene() ===================
     function showScene(index) {
       const scene = gameData[index];
       currentScene = index;
@@ -166,6 +168,7 @@
       `;
       attachButtonSounds();
     }
+    // ============================================================
 
     function attachButtonSounds() {
       document.querySelectorAll('button').forEach(btn => {
