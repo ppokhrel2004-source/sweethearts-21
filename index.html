@@ -33,7 +33,7 @@
       transition: background-image 0.5s ease-in-out;
     }
     .scene-content {
-      margin-bottom: 80px;
+      margin-bottom: 40px;
       padding: 0 20px;
     }
     .text-box {
@@ -86,7 +86,6 @@
   <div id="game"></div>
   <button class="music-toggle" onclick="toggleMusic()">🔊 Music</button>
 
-  <!-- Audio elements -->
   <audio id="bg-music" loop>
     <source src="audio/bg-music.mp3" type="audio/mpeg">
   </audio>
@@ -96,10 +95,10 @@
 
   <script>
     const gameData = [
-      { text: "It's midnight. You wait for Priyanka to call and wish you, but he has been MIA for hours now. Nayana creeps up behind you and wishes you a happy birthday", image: "images/backgrounds/night.jpg", character: "images/characters/roommate.jpg" },
-      { text: "Soon, Shruti, Aleena and MJ group call you and wish you a happy birthday too. Still, no sign of your boyfriend. You become agitated. What's wrong? Why hasn't he called yet?", image: "images/backgrounds/night.jpg", character: "images/characters/friend.jpg" },
-      { text: "You wait as long as your body lets you, but eventually the day's exhaustion takes over and you fall asleep, phone still in hand with no call from Priyanka", image: "images/backgrounds/sleepy.jpg", character: "images/characters/girlfriend.jpg" },
-      { text: "You wake up and see the room is just getting light in. It's way too early, and you dont know what could have woken you up until you hear your phone ringing. It mustve lodged itself between your bed and your wall while you were asleep.", image: "images/backgrounds/morning.jpg", character: "images/characters/girlfriend.jpg" },
+      { text: "It's midnight. You wait for Priyanka to call and wish you, but he has been MIA for hours now. Nayana creeps up behind you and wishes you a happy birthday", image: "images/backgrounds/night.jpg", character: "images/characters/roommate.jpg", next: 1 },
+      { text: "Soon, Shruti, Aleena and MJ group call you and wish you a happy birthday too. Still, no sign of your boyfriend. You become agitated. What's wrong? Why hasn't he called yet?", image: "images/backgrounds/night.jpg", character: "images/characters/friend.jpg", next: 2 },
+      { text: "You wait as long as your body lets you, but eventually the day's exhaustion takes over and you fall asleep, phone still in hand with no call from Priyanka", image: "images/backgrounds/sleepy.jpg", character: "images/characters/girlfriend.jpg", next: 3 },
+      { text: "You wake up and see the room is just getting light in. It's way too early, and you dont know what could have woken you up until you hear your phone ringing. It mustve lodged itself between your bed and your wall while you were asleep.", image: "images/backgrounds/morning.jpg", character: "images/characters/girlfriend.jpg", next: 4 },
       { text: "An unknown number calls... what will you do?", image: "images/backgrounds/morning.jpg", choices: [
         { text: "Decline the call", next: 5 },
         { text: "Pick it up", next: 6 }
@@ -123,7 +122,7 @@
       { text: "At the hotel, you snuggle together, watch your favorite movie (Hasee toh Phasee). He reveals something else, he bought the whole Fusilli Reasons franchise and ordered Spinach and Mushroom pasta for lunch.", image: "images/backgrounds/hotel.jpg", character: "images/characters/you.jpg", next: 13 },
       { text: "The day ends with you both snuggled together in bed, kissing occassionally and giggling about everything and nothing. You can't believe he's here with you.", image: "images/backgrounds/hotel-night.jpg", character: "images/characters/girlfriend.jpg", end: true },
       { text: "He reveals that he already has something planned for you: a pottery class. You've always wanted to go to one!", image: "images/backgrounds/pottery.jpg", character: "images/characters/you.jpg", next: 16 },
-      { text: "After a long pottery session and making cups that looked nothing like cups and evrything like frogs, you head for lunch at Baamey's. You order momo, chowmein, aloo dum. You're so full by the end, that you decide to stroll on the streets of Bangalore until night falls. You walk, hand-in-hand, taking in every moment. This day has certainly been one of the best days of this month.", image: "images/backgrounds/city.jpg", character: "images/characters/girlfriend.jpg", next: 18 },
+      { text: "After a long pottery session and making cups that looked nothing like cups and evrything like frogs, you head for lunch at Baamey's. You order momo, chowmein, aloo dum. You're so full by the end, that you decide to stroll on the streets of Bangalore until night falls. You walk, hand-in-hand, taking in every moment. This day has certainly been one of the best days of this month.", image: "images/backgrounds/city.jpg", character: "images/characters/girlfriend.jpg", next: 18 }, // Fixed: Added next: 17
       { text: "As the day ends, you return to the hotel and spend the night together, reminiscing about the day and how you were both covered to your elbows in clay.", image: "images/backgrounds/hotel-night.jpg", character: "images/characters/you.jpg", end: true }
     ];
 
@@ -149,18 +148,18 @@
       musicPlaying = !musicPlaying;
     }
 
-    // =================== UPDATED showScene() ===================
     function showScene(index) {
       const scene = gameData[index];
       currentScene = index;
+
       game.innerHTML = `
         <div class="scene" style="background-image: url('${scene.image}')">
           ${scene.character ? `<img src="${scene.character}" class="bubble">` : ""}
           <div class="scene-content">
             <div class="text-box">${scene.text}</div>
             ${
-              scene.choices 
-                ? `<div class="choices">${scene.choices.map((c,i)=>`<button onclick="choose(${i})">${c.text}</button>`).join("")}</div>` 
+              Array.isArray(scene.choices) && scene.choices.length > 0
+                ? `<div class="choices">${scene.choices.map((c,i)=>`<button onclick="choose(${i})">${c.text}</button>`).join("")}</div>`
                 : (scene.next !== undefined ? `<button class='next-btn' onclick='nextScene()'>Next</button>` : "")
             }
           </div>
@@ -168,7 +167,6 @@
       `;
       attachButtonSounds();
     }
-    // ============================================================
 
     function attachButtonSounds() {
       document.querySelectorAll('button').forEach(btn => {
@@ -177,20 +175,21 @@
     }
 
     function nextScene() {
-      const scene = gameData[currentScene];
-      if(scene.next !== undefined) {
-        showScene(scene.next);
-      } else {
-        showScene(currentScene+1);
-      }
-    }
+  const scene = gameData[currentScene];
+  if (scene.next !== undefined && scene.next < gameData.length) {
+    showScene(scene.next);
+  } else if (currentScene + 1 < gameData.length) {
+    showScene(currentScene + 1);
+  }
+  // else do nothing, we reached the final scene
+}
+
 
     function choose(i) {
       const choice = gameData[currentScene].choices[i];
       showScene(choice.next);
     }
 
-    // Start game
     showScene(0);
   </script>
 </body>
