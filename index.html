@@ -160,7 +160,7 @@
           <div class="text-box">${scene.text}</div>
           ${scene.choices 
             ? `<div class="choices">${scene.choices.map((c,i)=>`<button onclick="choose(${i})">${c.text}</button>`).join("")}</div>` 
-            : `${!scene.next ? "" : `<button class='next-btn' onclick='nextScene()'>Next</button>`}`
+            : ${!scene.choices && scene.next !== undefined ? `<button class='next-btn' onclick='nextScene()'>Next</button>` : ""}
           }
         </div>
       </div>
@@ -194,4 +194,5 @@
 </script>
 </body>
 </html>
+
 
